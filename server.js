@@ -16,7 +16,9 @@ app.get("/", (req, res) => {
 // connect MongoDB
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
-  .catch(err => console.log(err));
+  .catch((err) => {
+    console.error("MongoDB Error:", err);
+  });
 
 // start server
 app.listen(process.env.PORT || 5000, () => {
